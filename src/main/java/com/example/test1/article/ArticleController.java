@@ -28,7 +28,7 @@ public class ArticleController {
 
     @GetMapping("/create")
     public String create(){
-        return "article_create";
+        return "article_form";
     }
 
     @PostMapping("/create")
@@ -40,7 +40,7 @@ public class ArticleController {
         return "redirect:/article/list";
     }
 
-    @GetMapping("/detail")
+    @GetMapping("/detail/{id}")
     public String detail(Model model, @PathVariable("id") Integer id){
         Article article = this.articleService.getArticle(id);
         model.addAttribute("article", article);

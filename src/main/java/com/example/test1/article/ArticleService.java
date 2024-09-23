@@ -26,7 +26,6 @@ public class ArticleService {
         this.articleRepository.save(article);
     }
 
-
     public Article getArticle(Integer id) {
         Optional<Article> article = this.articleRepository.findById(id);
         if (article.isPresent()) {
