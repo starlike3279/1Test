@@ -28,16 +28,22 @@ public class ArticleController {
 
     @GetMapping("/create")
     public String create(){
-
+        return "article_create";
     }
 
     @PostMapping("/create")
-    public String create(@Valid String title, String content, BindingResult bindingResult){
-
+    public String create(@Valid ArticleForm articleForm, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "article_form";
+        }
+        this.articleService.create(articleForm.getTitle(), articleForm.getContent());
+        return "redirect:/article/list";
     }
 
     @GetMapping("/detail")
     public String detail(Model model, @PathVariable("id") Integer id){
+        Article article = this.articleService.getArticle(id);
+        model.addAttribute("article", article);
         return "article_detail";
     }
 
