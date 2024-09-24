@@ -27,12 +27,6 @@ public class UserController {
         return "signup_form";
     }
 
-    @GetMapping("/signup")
-    public String signup(Model model) {
-        model.addAttribute("userCreateForm", new UserCreateForm());
-        return "signup_form";
-    }
-
 
     @PostMapping("/signup")
     public String signup(@Valid UserCreateForm userCreateForm,
