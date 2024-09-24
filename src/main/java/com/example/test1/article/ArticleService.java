@@ -1,6 +1,7 @@
 package com.example.test1.article;
 
 import com.example.test1.DataNotFoundException;
+import com.example.test1.user.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,11 +24,12 @@ public class ArticleService {
         return this.articleRepository.findAll();
     }
 
-    public void create(String title, String content){
+    public void create(String title, String content, SiteUser author){
         Article article = new Article();
         article.setTitle(title);
         article.setContent(content);
         article.setCreateDate(LocalDateTime.now());
+        article.setAuthor(author);
         this.articleRepository.save(article);
     }
 

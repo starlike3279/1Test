@@ -1,5 +1,6 @@
 package com.example.test1.article;
 
+import com.example.test1.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,5 +23,8 @@ public class Article {
     private String content;
 
     private LocalDateTime createDate;
+
+    @ManyToOne
+    private SiteUser author;
 
 }
